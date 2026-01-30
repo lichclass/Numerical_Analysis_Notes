@@ -7,12 +7,11 @@ output:
   html_document: default
 ---
 
+1.  Prove $\lim\limits_{x \rightarrow -1} 2x+1=-1$
 
-1. Prove $\lim\limits_{x \rightarrow -1} 2x+1=-1$
+Solution:
 
-Solution: 
-
-Determine $\delta > 0$ so that if $|x-(-1)| < \delta$ then $|2x+1-(-1)| < \epsilon$. 
+Determine $\delta > 0$ so that if $|x-(-1)| < \delta$ then $|2x+1-(-1)| < \epsilon$.
 
 $$
 \begin{aligned}
@@ -37,9 +36,7 @@ $$
 \end{aligned}
 $$
 
-2. Determine all the numbers $c$ which satisfy the conclusions of
-the Mean Value Theorem for the following function and graph
-using R with the point/s identified. $f(x)=x^3-4x^2-2x-5$ on $[-10,10]$.
+2.  Determine all the numbers $c$ which satisfy the conclusions of the Mean Value Theorem for the following function and graph using R with the point/s identified. $f(x)=x^3-4x^2-2x-5$ on $[-10,10]$.
 
 Solution:
 
@@ -59,12 +56,18 @@ c &\approx 7.25
 $$
 
 ```{r, echo=FALSE}
-# put your code here alnino
+solve_quadratic <- function(a, b, c) {
+  discriminant <- b^2 - 4*a*c
+  c(
+    (-b + sqrt(discriminant)) / (2*a),
+    (-b - sqrt(discriminant)) / (2*a)
+  )
+}
+
+solve_quadratic(3, -8, -100)
 ```
 
-
-3. Find the point $c$ that satisfies the mean value theorem for
-integrals on the interval $[-1,1]$. The function is $f(x)=2e^x$
+3.  Find the point $c$ that satisfies the mean value theorem for integrals on the interval $[-1,1]$. The function is $f(x)=2e^x$
 
 Solution:
 
@@ -77,5 +80,146 @@ $$
 \frac{(e-e^{-1})}{2} &= e^c \\ 
 \ln{\left( \frac{(e-e^{-1})}{2} \right)} &= c \\
 0.16143936157 &\approx  c
+\end{aligned}
+$$
+
+4.  Consider the function $f(x) = cos(x)$
+
+<!-- -->
+
+**a.** Find the fourth Taylor polynomial for $f$ at $x = \pi$.
+
+Solution:
+
+$$
+\begin{aligned}
+f(x) &= \cos(x) \rightarrow f(\pi) = -1 \\
+f'(x) &= -\sin(x) \rightarrow f'(\pi) = 0  \\
+f''(x) &= -\cos(x) \rightarrow f''(\pi) = 1 \\
+f'''(x) &= \sin(x) \rightarrow f'''(\pi) = 0 \\
+f^{(4)} (x) &= -\cos(x) \rightarrow f^{(4)} (\pi) = -1  \\
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+P_4(x) &= -1 + \frac{1}{2}(x-\pi)^2 + \frac{1}{24}(x-\pi)^4
+\end{aligned}
+$$ **b.** Use the fourth Taylor polynomial to approximate $cos(0)$.
+
+Substitute x = 0:
+
+$$
+\begin{aligned}
+P_4(0) &= -1 + \frac{1}{2}(-\pi)^2 + \frac{1}{24}(-\pi)^4 \\ 
+P_4(0) &= -1 + \frac{(-\pi)^2}{2} + \frac{(-\pi)^4}{24}
+\end{aligned}
+$$ Numerically,
+
+$$
+\begin{aligned}
+P_4(0) &\approx -0.124 \\
+cos(0) &\approx -0.124
+\end{aligned}
+$$
+
+**c.** Use the fourth Taylor polynomial to bound the error.
+
+5.  If $fl(x)$ is the machine approximated number of a real number $x$ and $\epsilon$ is the corresponding relative error, then show that $fl(x) = (1-\epsilon)x$.
+
+Solution Let $fl(x)$ denote the machine approximation of a real number $x$. The relative error $\epsilon$ is defined as
+
+$$
+\begin{aligned}
+\epsilon &= \frac{x-fl(x)}{x}, \quad {x \neq 0}
+\end{aligned}
+$$
+
+Multiplying both sides by $x$ gives
+
+$$
+\begin{aligned}
+\epsilon x &= x-fl(x)
+\end{aligned}
+$$
+
+Rearranging,
+
+$$
+\begin{aligned}
+fl(x) &= x-\epsilon x
+\end{aligned}
+$$
+
+Factoring out $x$, we obtain that
+
+$$
+\begin{aligned}
+\boxed{fl(x) = x(1-\epsilon)}
+\end{aligned}
+$$
+
+6.  For the following numbers $x$ and their corresponding approximations $x_A$, find the number of significant digits in $x_A$ with respect to $x$ and find the relative error.
+
+**a.** $x$ = 451.01, $x_A$ = 451.023
+
+**b.** $x$ = −0.04518, $x_A$ = −0.045113
+
+**c.** $x$ = 23.4604, $x_A$ = 23.4213
+
+7.  Find the condition number for the following functions
+
+<!-- -->
+
+**a.** $f(x) = 2x^2$
+
+$$
+\begin{aligned}
+f'(x) &= 4x \\
+cn &= |\frac{x(4x)}{2x^2}|= 2 \\
+cn &= 2 \\
+\end{aligned}
+$$
+
+**b.** $f(x) = 2π^x$
+
+$$
+\begin{aligned}
+f'(x) &= 2\pi^x \ln(\pi)  \\
+cn &= |\frac{x(2\pi^x \ln(\pi))}{2\pi^x}|= x \ln(\pi) \\
+cn &= x \ln(\pi) \\
+\end{aligned}
+$$ **c.** $f(x) = 2b^x$
+
+$$
+\begin{aligned}
+f'(x) &= 2b^x \ln(b)  \\
+cn &= |\frac{x(2b^x \ln(b))}{2b^x}|= x \ln(b) \\
+cn &= x \ln(b) \\
+\end{aligned}
+$$ 8. Determine if the following series converges or diverges. If it converges determine its sum.
+
+$$
+\begin{aligned}
+\Sigma_{i=1}^\infty \frac{1}{2^n}
+\end{aligned}
+$$
+
+Solution:
+
+This is a geometric series with a common ratio
+
+$$
+\begin{aligned}
+r = \frac{1}{2}
+\end{aligned}
+$$
+
+Since $|r| < 1$, the series converge. The sum of geometric series starting at $n = 1$ is
+
+$$
+\begin{aligned}
+\Sigma_{i=1}^\infty ar^n &= \frac{ar}{1-r} \\
+\Sigma_{i=1}^\infty ar^n &= \frac{1/2}{1-1/2} = 1
 \end{aligned}
 $$
