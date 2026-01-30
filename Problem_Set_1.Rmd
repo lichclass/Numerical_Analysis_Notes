@@ -7,7 +7,7 @@ output:
   html_document: default
 ---
 
-1.  Prove $\lim\limits_{x \rightarrow -1} 2x+1=-1$
+1.)  Prove $\lim\limits_{x \rightarrow -1} 2x+1=-1$
 
 Solution:
 
@@ -36,7 +36,7 @@ $$
 \end{aligned}
 $$
 
-2.  Determine all the numbers $c$ which satisfy the conclusions of the Mean Value Theorem for the following function and graph using R with the point/s identified. $f(x)=x^3-4x^2-2x-5$ on $[-10,10]$.
+2.)  Determine all the numbers $c$ which satisfy the conclusions of the Mean Value Theorem for the following function and graph using R with the point/s identified. $f(x)=x^3-4x^2-2x-5$ on $[-10,10]$.
 
 Solution:
 
@@ -67,7 +67,7 @@ solve_quadratic <- function(a, b, c) {
 solve_quadratic(3, -8, -100)
 ```
 
-3.  Find the point $c$ that satisfies the mean value theorem for integrals on the interval $[-1,1]$. The function is $f(x)=2e^x$
+3.)  Find the point $c$ that satisfies the mean value theorem for integrals on the interval $[-1,1]$. The function is $f(x)=2e^x$
 
 Solution:
 
@@ -83,9 +83,8 @@ $$
 \end{aligned}
 $$
 
-4.  Consider the function $f(x) = cos(x)$
+4.)  Consider the function $f(x) = cos(x)$
 
-<!-- -->
 
 **a.** Find the fourth Taylor polynomial for $f$ at $x = \pi$.
 
@@ -125,7 +124,7 @@ $$
 
 **c.** Use the fourth Taylor polynomial to bound the error.
 
-5.  If $fl(x)$ is the machine approximated number of a real number $x$ and $\epsilon$ is the corresponding relative error, then show that $fl(x) = (1-\epsilon)x$.
+5.)  If $fl(x)$ is the machine approximated number of a real number $x$ and $\epsilon$ is the corresponding relative error, then show that $fl(x) = (1-\epsilon)x$.
 
 Solution Let $fl(x)$ denote the machine approximation of a real number $x$. The relative error $\epsilon$ is defined as
 
@@ -159,17 +158,16 @@ $$
 \end{aligned}
 $$
 
-6.  For the following numbers $x$ and their corresponding approximations $x_A$, find the number of significant digits in $x_A$ with respect to $x$ and find the relative error.
+6.)  For the following numbers $x$ and their corresponding approximations $x_A$, find the number of significant digits in $x_A$ with respect to $x$ and find the relative error.
 
 **a.** $x$ = 451.01, $x_A$ = 451.023
 
-**b.** $x$ = −0.04518, $x_A$ = −0.045113
+**b.** $x$ = -0.04518, $x_A$ = -0.045113
 
 **c.** $x$ = 23.4604, $x_A$ = 23.4213
 
-7.  Find the condition number for the following functions
+7.)  Find the condition number for the following functions
 
-<!-- -->
 
 **a.** $f(x) = 2x^2$
 
@@ -181,7 +179,7 @@ cn &= 2 \\
 \end{aligned}
 $$
 
-**b.** $f(x) = 2π^x$
+**b.** $f(x) = 2\pi^x$
 
 $$
 \begin{aligned}
@@ -197,7 +195,9 @@ f'(x) &= 2b^x \ln(b)  \\
 cn &= |\frac{x(2b^x \ln(b))}{2b^x}|= x \ln(b) \\
 cn &= x \ln(b) \\
 \end{aligned}
-$$ 8. Determine if the following series converges or diverges. If it converges determine its sum.
+$$ 
+
+8.) Determine if the following series converges or diverges. If it converges determine its sum.
 
 $$
 \begin{aligned}
