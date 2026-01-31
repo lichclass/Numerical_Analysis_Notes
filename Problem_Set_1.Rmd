@@ -56,6 +56,8 @@ c &\approx 7.25
 $$
 
 ```{r, echo=FALSE}
+library(Deriv)
+
 solve_quadratic <- function(a, b, c) {
   discriminant <- b^2 - 4*a*c
   c(
@@ -64,7 +66,18 @@ solve_quadratic <- function(a, b, c) {
   )
 }
 
-solve_quadratic(3, -8, -100)
+c_vals <- solve_quadratic(3, -8, -100)
+
+f_x <- function(x) {x^3-4*x^2-2*x-5}
+f_prime_x <- Deriv(f_x, "x")
+
+curve(f_x, from=-10, to=10, ylab='f(x)')
+coords_1 = c(c_vals[1], f_x(c_vals[1]))
+coords_2 = c(c_vals[2], f_x(c_vals[2]))
+points(coords_1[1], coords_1[2], col='red')
+points(coords_2[1], coords_2[2], col='red')
+text(coords_1[1], coords_1[2] - 150, coords_1[1], col='red')
+text(coords_2[1], coords_2[2] + 150, coords_2[1], col='red')
 ```
 
 3.)  Find the point $c$ that satisfies the mean value theorem for integrals on the interval $[-1,1]$. The function is $f(x)=2e^x$
