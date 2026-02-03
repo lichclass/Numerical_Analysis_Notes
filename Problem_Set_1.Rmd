@@ -9,8 +9,6 @@ output:
 
 \textbf{1.)  Prove $\lim\limits_{x \rightarrow -1} 2x+1=-1$}
 
-Solution:
-
 Determine $\delta > 0$ so that if $|x-(-1)| < \delta$ then $|2x+1-(-1)| < \epsilon$.
 
 $$
@@ -37,8 +35,6 @@ $$
 $$
 
 \textbf{2.)  Determine all the numbers $c$ which satisfy the conclusions of the Mean Value Theorem for the following function and graph using R with the point/s identified. $f(x)=x^3-4x^2-2x-5$ on $[-10,10]$.}
-
-Solution:
 
 $$
 \begin{aligned}
@@ -82,8 +78,6 @@ text(coords_2[1], coords_2[2] + 150, coords_2[1], col='red')
 
 \textbf{3.)  Find the point $c$ that satisfies the mean value theorem for integrals on the interval $[-1,1]$. The function is $f(x)=2e^x$}
 
-Solution:
-
 $$
 \begin{aligned}
 \int_{-1}^{1} 2e^x dx &= (2e^c)(1-(-1)) \\
@@ -98,10 +92,7 @@ $$
 
 \textbf{4.)  Consider the function $f(x) = cos(x)$}
 
-
 **a.** Find the fourth Taylor polynomial for $f$ at $x = \pi$.
-
-Solution:
 
 $$
 \begin{aligned}
@@ -137,9 +128,11 @@ $$
 
 **c.** Use the fourth Taylor polynomial to bound the error.
 
+For a polynomial of degree $n=4$, the error $R_5(x)$ is defined by the formula $R_5(x)=\frac{f^{(5)}(c)}{5!}(x-a)^5$, where $c$ exists somewhere in the interval $[0,\pi]$. We don't know the value of $c$, so we find an upper bound on $|R_5(0)|$ by determining the maximum value of $|f^{(5)}|$ on the interval $[0,\pi]$. Since $f^{(5)}(x)=\sin{x}$, the largest value for $|f^{(5)}(x)|$ on that interval is $\sin{\frac{\pi}{2}}=1$. Therefore, we have \boxed{|R_5(0)| \leq \frac{1}{120}|-\pi|^5 \approx 2.550164}
+
 \textbf{5.)  If $fl(x)$ is the machine approximated number of a real number $x$ and $\epsilon$ is the corresponding relative error, then show that $fl(x) = (1-\epsilon)x$.}
 
-Solution Let $fl(x)$ denote the machine approximation of a real number $x$. The relative error $\epsilon$ is defined as
+Let $fl(x)$ denote the machine approximation of a real number $x$. The relative error $\epsilon$ is defined as
 
 $$
 \begin{aligned}
@@ -173,11 +166,31 @@ $$
 
 \textbf{6.)  For the following numbers $x$ and their corresponding approximations $x_A$, find the number of significant digits in $x_A$ with respect to $x$ and find the relative error.}
 
-**a.** $x$ = 451.01, $x_A$ = 451.023
+Note: 
 
-**b.** $x$ = -0.04518, $x_A$ = -0.045113
+- $s$ is the largest integer s.t. $\beta^s \leq |x|$
 
-**c.** $x$ = 23.4604, $x_A$ = 23.4213
+- If $x_A$ is an approximation to $x$, then we say that $x_A$ approximates $x$ to $r$ significant $\beta$-digits if $|x-x_A| \leq \frac{1}{2}\beta^{s-r+1}$
+
+- The relative error is defined as $E_r = \frac{|x-x_A|}{x}$
+
+**a.** $x = 451.01$, $x_A = 451.023$
+
+For $x=451.01$, the approximate number $x_A=451.023$ has four significant digits since $|x-x_A|=|451.01-451.023| = 0.013 \leq 0.05 = \frac{1}{2}10^{-1}$, since $10^2 = 100 \leq 451.01 < 10^3$, we have $s=2$. Therefore, in this case \boxed{r=4}, because $|x-x_A| \leq \frac{1}{2}\beta^{s-r+1}=\frac{1}{2}\beta^{2-4+1}=\frac{1}{2}10^{-1}$
+
+The relative error is \boxed{E_r(x_A) = \frac{0.013}{451.01} \approx 2.88 \times 10^{-5}}.
+
+**b.** $x = -0.04518$, $x_A = -0.045113$
+
+For $x=-0.04518$, the approximate number $x_A=0.045113$ has two significant digits since $|x-x_A|=|(-0.04518)-(-0.045113)| = 0.000067 \leq 0.0005 = \frac{1}{2}10^{-3}$, since $10^{-2} = 0.01 \leq 0.04518 < 10^{-1}$, we have $s=-2$. Therefore, in this case \boxed{r=2}, because $|x-x_A| \leq \frac{1}{2}\beta^{s-r+1}=\frac{1}{2}\beta^{-2-2+1}=\frac{1}{2}10^{-3}$
+
+The relative error is \boxed{E_r(x_A) = \frac{0.000067}{0.04518} \approx 1.48 \times 10^{-3}}.
+
+**c.** $x = 23.4604$, $x_A = 23.4213$
+
+For $x=23.4604$, the approximate number $x_A=23.4213$ has three significant digits since $|x-x_A|=|23.4604-23.4213| = 0.0391 \leq 0.05 = \frac{1}{2}10^{-1}$, since $10^{1} = 10 \leq 23.4604 < 10^{2}$, we have $s=1$. Therefore, in this case \boxed{r=3}, because $|x-x_A| \leq \frac{1}{2}\beta^{s-r+1}=\frac{1}{2}\beta^{1-3+1}=\frac{1}{2}10^{-1}$
+
+The relative error is \boxed{E_r(x_A) = \frac{0.0391}{23.4604} \approx 1.67 \times 10^{-3}}.
 
 
 \textbf{7.)  Find the condition number for the following functions}
@@ -218,8 +231,6 @@ $$
 \Sigma_{i=1}^\infty \frac{1}{2^n}
 \end{aligned}
 $$
-
-Solution:
 
 This is a geometric series with a common ratio
 
