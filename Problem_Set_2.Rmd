@@ -1,0 +1,222 @@
+---
+title: "Problem_Set_2"
+author: "Group 2"
+date: "2026-02-26"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+\textbf{1.)  Use the bisection method with a hand calculator or computer to find the real root of $x^3 - x - 3 = 0$. Use an error tolerance of $\epsilon = 0.0001$. Graph teh function $f(x) = x^3 - x - 3$ and label the root.}
+
+Solution:
+
+Finding the root using bisection, given $[a,b]=[1,2]$.
+
+```{r, echo=FALSE}
+library(cmna)
+f_x <- function(x){x^3-x-3}
+
+root <- bisection(f_x, 1, 2, tol=0.0001)
+root
+```
+
+$\boxed{\text{The root is } 1.671722}$
+
+```{r, echo=FALSE}
+curve(f_x, from=0, to=4, col='red')
+abline(h=0)
+
+# a and b
+abline(v=1, col='blue')
+abline(v=2, col='blue')
+
+# root
+points(root, 0)
+text(root, 2, paste('f(',root,')'))
+```
+
+\textbf{2.) The function $f(x) = -3x^3 + 2e^{\frac{x^2}{2}} - 1$ has values of zero near $x=-0.5$ and $x=0.5$.}
+
+  a. What is the derivative of $f$? 
+  
+  Answer: $\boxed{x(2e^{\frac{x^2}{2}} - 9x)}$
+  
+  b. If you begin Newton's method at $x = 0$, which root is reached? How many iterations to achieve an error less than $10^{-5}$? 
+  
+  Answer: If the $x$ is equals to $0$, a root is not reached since in solving for the next $x$ using the equation: $x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}$ requires a denominator with nonzero value i.e. $f'(x) \neq 0$. As for the number of iterations, it's not applicable since it simply stops at the first iteration. The plot below plots $f'(0)$.
+  
+```{r, echo=FALSE}
+f_x <- function(x) -3*x^3 + 2*exp(x^2/2) - 1
+f_prime <- function(x) 2*x*exp(x^2/2) - 9*x^2
+
+curve(f_x, main="Plotting f(x)", from=-1, to=3, col='red')
+abline(h=0)
+points(0, f_prime(0))
+```
+  
+  c. Begin Newton's method at another starting point to get the other zero.
+  
+Answer: Using the starting point $x=1$
+
+```{r, echo=FALSE}
+MyNewton <- function(func, d_func, x, eps){
+  print(x)
+  x_next = x - (func(x) / d_func(x))
+  if (abs(x_next - x) <= eps){
+    return(x_next)
+  }
+  
+  return(MyNewton(func, d_func, x_next, eps))
+}
+
+MyNewton(f_x, f_prime, 1, 0.00001)
+```
+$\boxed{\text{Therefore, the root is } 0.8568006 \text{ when } x=1}$
+
+\textbf{3.) Use the function from no. 2 and find the root using the secant method where $x_0=0$ and $x_1=1$. Use an error tolerance of $\epsilon = 0.001$.}
+
+```{r, echo=FALSE}
+MySecant <- function(f, x_prev, x, tol){
+  num <- x - x_prev
+  den <- f(x) - f(x_prev)
+  
+  next_x <- x - f(x) * (num / den)
+  
+  if(abs(next_x - x) <= tol){
+    return(next_x)
+  }
+  
+  print(next_x)
+  return(MySecant(f, x, next_x, tol))
+}
+
+MySecant(f_x, 0, 1, 0.001)
+```
+
+$\boxed{\text{Therefore, the root is } 0.8568007 \text{ when } x_0=0, x_1=1, \text{ and } \epsilon = 0.001 \text{ using the Secant Method}}$
+
+\textbf{4.) Consider the system of equations:}
+$$
+\begin{cases}
+2x + 3y - z = 5 \\
+4x - y + 2z = 6 \\
+-3x + 2y + z = -4
+\end{cases}
+$$
+ 
+  a. Present the augmented matrix of the system. Answer:
+  
+$$
+\boxed{\left(
+\begin{array}{ccc|c}
+2 & 3 & -1 & 5 \\
+4 & -1 & 2 & 6 \\
+-3 & 2 & 1 & -4
+\end{array}
+\right)}
+$$
+
+  
+  b. Solve the system using $Ax=LUx=Ly=b$ and round the final answer to 4 decimal digits.
+  
+```{r, echo=FALSE}
+LU <- function(mat){
+  upper <- mat
+  n <- nrow(mat)
+  lower <- diag(n)
+  
+  for(col in 1:(n-1)){
+    for(row in (col+1):n){
+      m <- upper[row, col] / upper[col, col]
+      lower[row, col] <- m
+      upper[row,] = upper[row,] - m * upper[col,]
+      print(sprintf("Row Operation: R_%d ← R_%d - (%.2f)R_%d",
+              row, row, m, col))
+      print("Upper:")
+      print(upper)
+      print("Lower:")
+      print(lower)
+    }
+  }
+  
+  return(list(L = lower, U = upper))
+}
+
+A = matrix(c(2, 3, -1, 4, -1, 2, -3, 2, 1), nrow=3, byrow=TRUE)
+b = matrix(c(5, 6, -4), nrow=3, byrow=TRUE)
+lu_results = LU(A)
+
+L = lu_results$L
+U = lu_results$U
+
+# Solving for y using Ly = b
+n <- nrow(L)
+y <- matrix(0, nrow=3, ncol=1)
+
+for(i in 1:n){
+  sum_l <- 0
+  if(i > 1){
+    for(j in 1:(i-1)){
+      sum_l <- sum_l + L[i,j] * y[j,1]
+    }
+  }
+  y[i,1] <- b[i,1] - sum_l
+}
+
+# Solving for x using Ux = y
+x = matrix(0, nrow=3, ncol=1)
+
+for(i in 3:1){
+  sum_u <- 0
+  if (i < n) {
+    for(j in (i+1):n){
+      sum_u <- sum_u + U[i,j] * x[j,1]
+    }
+  }
+  x[i,1] <- (y[i,1] - sum_u) / U[i,i]
+}
+
+print(round(y, 4))
+print(round(x, 4))
+```
+$$
+\boxed{
+\text{Therefore, the final answer is } x=1.6667,y=0.5333,z=-0.0667
+}
+$$
+  c. Find the residual vector if the correct solution is: $x=1,y=2,z=-1$ Answer:
+  
+  The residual vector can be solved by finding the difference between the correct solution and the answers from the previous question:
+
+$$
+\boxed{
+\begin{aligned}
+x_{residual} &= 1 - 1.6667 = -0.6667 \\
+y_{residual} &= 2 - 0.5333 = 1.4667 \\
+z_{residual} &= -1 - (-0.0667) = -0.9333
+\end{aligned}
+}
+$$
+  
+\textbf{5.) Compute the Frobenius norm, maximum column sum, and maximum row sum of the matrix:}
+$$
+\left(
+\begin{array}{ccc}
+10.2 & 2.4 & 4.5 \\
+-2.3 & 7.7 & 11.1 \\
+-5.5 & -3.2 & 0.9
+\end{array}
+\right)
+$$
+Answer: 
+
+\textbf{6.) Solve the system of equations given in no.4, starting with the initial vector of $[0,0,0]$:}
+
+  a. Solve using the Jacobi method with 2-digit precision.
+  
+  b. Solve using Gauss-Seidel method with 2-digit precision.
+  
+  c. Solve for $\overline{e}$ if the true solution is: $x=1, y=2, z=-1$
+
