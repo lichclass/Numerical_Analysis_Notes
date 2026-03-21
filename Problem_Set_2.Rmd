@@ -62,7 +62,7 @@ knitr::include_graphics("Pastoriza_sign.png")
 
 #### 1.)  Use the bisection method with a hand calculator or computer to find the real root of $x^3 - x - 3 = 0$. Use an error tolerance of $\epsilon = 0.0001$. Graph the function $f(x) = x^3 - x - 3$ and label the root.
 
-**Solution:**
+**Answer:**
 
 Finding the root using bisection, given $[a,b]=[1,2]$.
 
@@ -114,7 +114,7 @@ bisection_table_df
 ```
 
 $$
-\boxed{\text{Therefore, the root is } 1.6717}
+\boxed{\text{Therefore, the root is } 1.6717.}
 $$
 
 ```{r, echo=TRUE}
@@ -193,7 +193,7 @@ newton_table_df
 ```
 
 $$
-\boxed{\text{Therefore, the root is } 0.8568 \text{ when } x=1 {\text { and the number of iterations needed to achieve an error less than 10-5 is 4 iterations.}}}
+\boxed{\text{Therefore, the root is } 0.8568 \text{ when } x=1. }
 $$
   
   c. Begin Newton's method at another starting point to get the other zero. **Answer: Using the starting point $x=2$**
@@ -237,7 +237,7 @@ newton_table_2_df
 ```
 
 $$
-\boxed{\text{Therefore, the root is } 0.8568 \text{ when } x=2}
+\boxed{\text{Therefore, the root is } 0.8568 \text{ when } x=2.}
 $$
 
 
@@ -285,7 +285,7 @@ secant_table_df
 ```
 
 $$
-\boxed{\text{Therefore, the root is } 0.857 \text{ when } x_0=0, x_1=1, \text{ and } \epsilon = 0.001 \text{ using the Secant Method}}
+\boxed{\text{Therefore, the root is } 0.857 \text{ when } x_0=0, x_1=1, \text{ and } \epsilon = 0.001 \text{ using the Secant Method}.}
 $$
 
 #### 4.) Consider the system of equations:
@@ -375,7 +375,7 @@ print(round(x, 4))
 
 $$
 \boxed{
-\text{Therefore, the solution is } x = (1.6667, 0.5333, -0.0667)
+\text{Therefore, the solution is } x = (1.6667, 0.5333, -0.0667).
 }
 $$
 
@@ -383,61 +383,37 @@ $$
 
 $$
 \begin{aligned}
-
 r &= b - Ax \\
 r &= 
-
-\left(
-\begin{array}{c}
-5 \\ 6 \\ -4 
-\end{array}
-\right)
-
+\begin{pmatrix}
+5 \\ 6 \\ -4
+\end{pmatrix}
 -
-
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
 2 & 3 & -1 \\
 4 & -1 & 2 \\
 -3 & 2 & 1
-\end{array}
-\right)
-
-\left(
-\begin{array}{c}
-1 \\ 2 \\ -1 
-\end{array}
-\right) \\
-
+\end{pmatrix}
+\begin{pmatrix}
+1 \\ 2 \\ -1
+\end{pmatrix} \\
 r &=
-
-\left(
-\begin{array}{c}
-5 \\ 6 \\ -4 
-\end{array}
-\right)
-
+\begin{pmatrix}
+5 \\ 6 \\ -4
+\end{pmatrix}
 -
-
-\left(
-\begin{array}{c}
-9 \\ 0 \\ 0 
-\end{array}
-\right) \\
-
-r &= 
-
-\left(
-\begin{array}{c}
--4 \\ 6 \\ -4 
-\end{array}
-\right)
-
+\begin{pmatrix}
+9 \\ 0 \\ 0
+\end{pmatrix} \\
+r &=
+\begin{pmatrix}
+-4 \\ 6 \\ -4
+\end{pmatrix}
 \end{aligned}
 $$
 
 $$
-\boxed{\text{Therefore, the residual vector is } (-4, 6, -4)}
+\boxed{\text{Therefore, the residual vector is } (-4, 6, -4).}
 $$
   
 #### 5.) Compute the Frobenius norm, maximum column sum, and maximum row sum of the matrix:
@@ -485,11 +461,13 @@ $$
 $$
 
 $$
+\boxed{
 \begin{aligned}
 ||A||_f &= 18.95098942 \text{, Frobenius Norm} \\
 ||A||_1 &= 18.0 \text{, Maximum column sum} \\
 ||A||_\infty &= 21.1 \text{, Maximum row sum}
 \end{aligned}
+}
 $$
 
 #### 6.) Solve the system of equations given in no. 4, starting with the initial vector of $[0,0,0]$:
@@ -537,7 +515,7 @@ D
   a. Solve using the Jacobi method with 2-digit precision. **Answer: The system of equations cannot guarantee convergence using the Jacobi Method since it violates the condition wherein the diagonal values must be greater than or equal to the sum of its non-diagonal entries in the same row. Even, rearranging the rows to satisfy the diagonally dominant condition is futile.** 
 $$
 \boxed{
-\text{Therefore, it cannot be solved using the Jacobi Method}
+\text{Therefore, it cannot be solved using the Jacobi Method.}
 }
 $$  
 
@@ -555,7 +533,7 @@ for(i in 1:5){
 
 $$
 \boxed{
-\text{Therefore, it cannot be solved using the Gauss-Seidel Method}
+\text{Therefore, it cannot be solved using the Gauss-Seidel Method.}
 }
 $$
 ```{r, echo=TRUE}
@@ -578,7 +556,7 @@ round(abs(e), 4)
 
 $$
 \boxed{
-\text{Therefore, } \overline{e} = (0.6667, 1.4667, 0.9333)
+\text{Therefore, } \overline{e} = (0.6667, 1.4667, 0.9333).
 }
 $$
   
