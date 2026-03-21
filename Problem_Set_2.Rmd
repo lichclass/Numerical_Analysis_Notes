@@ -6,7 +6,61 @@ output:
   html_document:
     df_print: paged
   pdf_document: default
+  
 ---
+
+#### Academic Integrity Pledge
+
+This activity is intended to assess our own understanding of the lesson. We affirm that we will complete this problem set **independently** and will not use **Artificial Intelligence tools (such as ChatGPT, Copilot, Gemini, or similar systems)** to generate answers or solutions.
+
+We will rely only on *notes, textbook, and class materials* unless otherwise permitted by the instructor. We understand that submitting work generated or assisted by AI **violates academic integrity** and may result in disciplinary action under university policies.
+
+**Include a copy of this pledge in your problem set and sign below.**
+
+---
+
+#### 1.  
+**Name:** Abangan, Elijah Kahlil Andres P.
+
+**Signature:**
+```{r include-image1, echo=FALSE, out.width="10%"}
+knitr::include_graphics("Abangan_sign.png")
+```
+
+
+#### 2.  
+**Name:** Barago, Sharly Pia Rose S.
+
+**Signature:** 
+```{r include-image2, echo=FALSE, out.width="10%"}
+knitr::include_graphics("Barago_sign.png")
+```
+
+#### 3.  
+**Name:** Go, Andrei Benedict A.
+
+**Signature:** 
+```{r include-image3, echo=FALSE, out.width="5%"}
+knitr::include_graphics("Go_sign.png")
+```
+
+
+#### 4.  
+**Name:** Muñoz, Nash Adam G.
+
+**Signature:** 
+```{r include-image4, echo=FALSE, out.width="5%"}
+knitr::include_graphics("Munoz_sign.png")
+```
+
+#### 5.  
+**Name:** Pastoriza, Alniño Manwil E. 
+
+**Signature:** 
+```{r include-image5, echo=FALSE, out.width="10%"}
+knitr::include_graphics("Pastoriza_sign.png")
+```
+
 
 <h4> 1.)  Use the bisection method with a hand calculator or computer to find the real root of $x^3 - x - 3 = 0$. Use an error tolerance of $\epsilon = 0.0001$. Graph the function $f(x) = x^3 - x - 3$ and label the root. </h4>
 
@@ -138,7 +192,7 @@ newton_table_df
 ```
 
 $$
-\boxed{\text{Therefore, the root is } 0.8568 \text{ when } x=1}
+\boxed{\text{Therefore, the root is } 0.8568 \text{ when } x=1 {\text { and the number of iterations needed to achieve an error less than 10-5 is 4 iterations.}}}
 $$
   
   c. Begin Newton's method at another starting point to get the other zero. <b> Answer: Using the starting point $x=2$ </b>
