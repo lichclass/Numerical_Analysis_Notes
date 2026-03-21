@@ -8,7 +8,7 @@ output:
   pdf_document: default
 ---
 
-<h4> 1.)  Use the bisection method with a hand calculator or computer to find the real root of $x^3 - x - 3 = 0$. Use an error tolerance of $\epsilon = 0.0001$. Graph the function $f(x) = x^3 - x - 3$ and label the root.} </h4>
+<h4> 1.)  Use the bisection method with a hand calculator or computer to find the real root of $x^3 - x - 3 = 0$. Use an error tolerance of $\epsilon = 0.0001$. Graph the function $f(x) = x^3 - x - 3$ and label the root. </h4>
 
 <b> Solution: </b>
 
@@ -62,7 +62,7 @@ bisection_table_df
 ```
 
 $$
-\boxed{\text{The root is } 1.6717}
+\boxed{\text{Therefore, the root is } 1.6717}
 $$
 
 ```{r, echo=TRUE}
@@ -80,7 +80,7 @@ text(c, 2, paste('f(',round(root, 4),')'))
 
 
 
-<h4> 2.) The function $f(x) = -3x^3 + 2e^{\frac{x^2}{2}} - 1$ has values of zero near $x=-0.5$ and $x=0.5$.} </h4>
+<h4> 2.) The function $f(x) = -3x^3 + 2e^{\frac{x^2}{2}} - 1$ has values of zero near $x=-0.5$ and $x=0.5$. </h4>
 
 
   a. What is the derivative of $f$? <b> Answer: </b> 
@@ -97,7 +97,7 @@ $$
 ```{r, echo=TRUE}
 f_x <- function(x) { -3*x^3 + 2 * exp(x^2/2) - 1 }
 f_prime <- function(x) { 2 * x * exp(x^2 / 2) - 9 * x^2 }
-tol <- 0.0001
+tol <- 0.00001
 x_curr <- 1
 
 newton_table <- list(
@@ -186,7 +186,7 @@ $$
 $$
 
 
-<h4> 3.) Use the function from no. 2 and find the root using the secant method where $x_0=0$ and $x_1=1$. Use an error tolerance of $\epsilon = 0.001$.} </h4>
+<h4> 3.) Use the function from no. 2 and find the root using the secant method where $x_0=0$ and $x_1=1$. Use an error tolerance of $\epsilon = 0.001$. </h4>
 
 ```{r, echo=TRUE}
 secant_table <- list(
@@ -198,6 +198,7 @@ secant_table <- list(
   "Error" = c()
 )
 
+# Secant Method Algorithm
 MySecant <- function(f, x_prev, x, tol, table) {
   f_x_prev <- f(x_prev)
   f_x <- f(x)
@@ -229,7 +230,7 @@ secant_table_df
 ```
 
 $$
-\boxed{\text{Therefore, the root is } 0.8568 \text{ when } x_0=0, x_1=1, \text{ and } \epsilon = 0.001 \text{ using the Secant Method}}
+\boxed{\text{Therefore, the root is } 0.857 \text{ when } x_0=0, x_1=1, \text{ and } \epsilon = 0.001 \text{ using the Secant Method}}
 $$
 
 <h4> 4.) Consider the system of equations: </h4>
@@ -319,7 +320,7 @@ print(round(x, 4))
 
 $$
 \boxed{
-\text{Therefore, the final answer is } x=1.6667,y=0.5333,z=-0.0667
+\text{Therefore, the solution is } x = (1.6667, 0.5333, -0.0667)
 }
 $$
 
@@ -432,13 +433,14 @@ $$
 }
 $$
 
-<h4> 6.) Solve the system of equations given in no.4, starting with the initial vector of $[0,0,0]$: </h4>
+<h4> 6.) Solve the system of equations given in no. 4, starting with the initial vector of $[0,0,0]$: </h4>
 
   a. Solve using the Jacobi method with 2-digit precision.
 ```{r, echo=TRUE}
 A = matrix(c(2, 3, -1, 4, -1, 2, -3, 2, 1), nrow=3, byrow=TRUE)
 b = matrix(c(5, 6, -4), nrow=3, byrow=TRUE)
 
+# This function returns the Lower Triangle, Upper Triangle, and Diagonal Matrices
 LUD_jacobi <- function(mat){
   n <- nrow(mat)
   lower <- matrix(0, nrow=n, ncol=n)
