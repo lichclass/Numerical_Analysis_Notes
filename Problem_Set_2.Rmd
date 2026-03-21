@@ -3,10 +3,10 @@ title: "Problem Set 2"
 author: "Group 2"
 date: "March 21, 2026"
 output:
+  
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
-  
 ---
 
 #### Academic Integrity Pledge
@@ -14,8 +14,6 @@ output:
 This activity is intended to assess our own understanding of the lesson. We affirm that we will complete this problem set **independently** and will not use **Artificial Intelligence tools (such as ChatGPT, Copilot, Gemini, or similar systems)** to generate answers or solutions.
 
 We will rely only on *notes, textbook, and class materials* unless otherwise permitted by the instructor. We understand that submitting work generated or assisted by AI **violates academic integrity** and may result in disciplinary action under university policies.
-
-**Include a copy of this pledge in your problem set and sign below.**
 
 ---
 
@@ -62,9 +60,9 @@ knitr::include_graphics("Pastoriza_sign.png")
 ```
 
 
-<h4> 1.)  Use the bisection method with a hand calculator or computer to find the real root of $x^3 - x - 3 = 0$. Use an error tolerance of $\epsilon = 0.0001$. Graph the function $f(x) = x^3 - x - 3$ and label the root. </h4>
+#### 1.)  Use the bisection method with a hand calculator or computer to find the real root of $x^3 - x - 3 = 0$. Use an error tolerance of $\epsilon = 0.0001$. Graph the function $f(x) = x^3 - x - 3$ and label the root.
 
-<b> Solution: </b>
+**Solution:**
 
 Finding the root using bisection, given $[a,b]=[1,2]$.
 
@@ -134,20 +132,23 @@ text(c, 2, paste('f(',round(root, 4),')'))
 
 
 
-<h4> 2.) The function $f(x) = -3x^3 + 2e^{\frac{x^2}{2}} - 1$ has values of zero near $x=-0.5$ and $x=0.5$. </h4>
+#### 2.) The function $f(x) = -3x^3 + 2e^{\frac{x^2}{2}} - 1$ has values of zero near $x=-0.5$ and $x=0.5$.
 
 
-  a. What is the derivative of $f$? <b> Answer: </b> 
+  a. What is the derivative of $f$? **Answer:** 
+$$
+\begin{aligned}
+f(x) &= -3x^3 + 2e^{\frac{x^2}{2}} - 1 \\
+f'(x) &= -9x^2 + 2xe^{\frac{x^2}{2}}
+\end{aligned}
+$$
 $$
 \boxed{
-\begin{aligned}
-= -3x^3 + 2e^{\frac{x^2}{2}} - 1 \\
-= -9x^2 + 2xe^{\frac{x^2}{2}}
-\end{aligned}
+\text{Therefore, the derivative of } f \text{ is } -9x^2 + 2xe^{\frac{x^2}{2}}
 }
 $$
   
-  b. If you begin Newton's method at $x = 1$, which root is reached? How many iterations to achieve an error less than $10^{-5}$? <b> Answer: </b>
+  b. If you begin Newton's method at $x = 1$, which root is reached? How many iterations to achieve an error less than $10^{-5}$? **Answer:**
 ```{r, echo=TRUE}
 f_x <- function(x) { -3*x^3 + 2 * exp(x^2/2) - 1 }
 f_prime <- function(x) { 2 * x * exp(x^2 / 2) - 9 * x^2 }
@@ -195,7 +196,7 @@ $$
 \boxed{\text{Therefore, the root is } 0.8568 \text{ when } x=1 {\text { and the number of iterations needed to achieve an error less than 10-5 is 4 iterations.}}}
 $$
   
-  c. Begin Newton's method at another starting point to get the other zero. <b> Answer: Using the starting point $x=2$ </b>
+  c. Begin Newton's method at another starting point to get the other zero. **Answer: Using the starting point $x=2$**
 
 ```{r, echo=TRUE}
 x_curr <- 2
@@ -240,7 +241,7 @@ $$
 $$
 
 
-<h4> 3.) Use the function from no. 2 and find the root using the secant method where $x_0=0$ and $x_1=1$. Use an error tolerance of $\epsilon = 0.001$. </h4>
+#### 3.) Use the function from no. 2 and find the root using the secant method where $x_0=0$ and $x_1=1$. Use an error tolerance of $\epsilon = 0.001$.
 
 ```{r, echo=TRUE}
 secant_table <- list(
@@ -287,7 +288,7 @@ $$
 \boxed{\text{Therefore, the root is } 0.857 \text{ when } x_0=0, x_1=1, \text{ and } \epsilon = 0.001 \text{ using the Secant Method}}
 $$
 
-<h4> 4.) Consider the system of equations: </h4>
+#### 4.) Consider the system of equations:
 $$
 \begin{cases}
 2x + 3y - z = 5 \\
@@ -296,7 +297,7 @@ $$
 \end{cases}
 $$
  
-  a. Present the augmented matrix of the system. <b> Answer: </b>
+  a. Present the augmented matrix of the system. **Answer:**
   
 $$
 \boxed{
@@ -311,7 +312,7 @@ $$
 $$
 
   
-  b. Solve the system using $Ax=LUx=Ly=b$ and round the final answer to 4 decimal digits. <b> Answer: </b>
+  b. Solve the system using $Ax=LUx=Ly=b$ and round the final answer to 4 decimal digits. **Answer:**
   
 ```{r, echo=TRUE}
 LU <- function(mat){
@@ -378,8 +379,9 @@ $$
 }
 $$
 
-  c. Find the residual vector if the correct solution is: $x=1, y=2, z=-1$ <b> Answer: </b>
+  c. Find the residual vector if the correct solution is: $x=1, y=2, z=-1$ **Answer:**
 
+$$
 \begin{aligned}
 
 r &= b - Ax \\
@@ -432,12 +434,13 @@ r &=
 \right)
 
 \end{aligned}
+$$
 
 $$
 \boxed{\text{Therefore, the residual vector is } (-4, 6, -4)}
 $$
   
-<h4> 5.) Compute the Frobenius norm, maximum column sum, and maximum row sum of the matrix: </h4>
+#### 5.) Compute the Frobenius norm, maximum column sum, and maximum row sum of the matrix:
 $$
 \left(
 \begin{array}{ccc}
@@ -448,7 +451,7 @@ $$
 \right)
 $$
 
-<b> Answer: </b>
+**Answer:**
 
 $$
 \begin{aligned}
@@ -459,6 +462,7 @@ $$
 \end{aligned}
 $$
 
+$$
 \begin{aligned}
 &\text{Maximum Column Sum} \\
 \text{Col. 1} &= |10.2| + |-2.3| + |-5.5| = 18.0 \\
@@ -467,7 +471,9 @@ $$
 \text{MaxColSum} &= max(18.0, 13.3, 16.5) \\
 \text{MaxColSum} &= 18.0
 \end{aligned}
+$$
 
+$$
 \begin{aligned}
 &\text{Maximum Row Sum} \\
 \text{Row. 1} &= |10.2| + |2.4| + |4.5| = 17.1 \\
@@ -476,18 +482,17 @@ $$
 \text{MaxRowSum} &= max(17.1, 21.1, 9.6) \\
 \text{MaxRowSum} &= 21.1
 \end{aligned}
+$$
 
 $$
-\boxed{
 \begin{aligned}
 ||A||_f &= 18.95098942 \text{, Frobenius Norm} \\
-||A||_\infty &= 18.0 \text{, Maximum column sum} \\
+||A||_1 &= 18.0 \text{, Maximum column sum} \\
 ||A||_\infty &= 21.1 \text{, Maximum row sum}
 \end{aligned}
-}
 $$
 
-<h4> 6.) Solve the system of equations given in no. 4, starting with the initial vector of $[0,0,0]$: </h4>
+#### 6.) Solve the system of equations given in no. 4, starting with the initial vector of $[0,0,0]$:
 
 ```{r, echo=TRUE}
 # Preprocessing the LUD matrices
@@ -529,7 +534,7 @@ D <- LUD_results$D
 D
 ```
 
-  a. Solve using the Jacobi method with 2-digit precision. <b> Answer: The system of equations cannot guarantee convergence using the Jacobi Method since it violates the condition wherein the diagonal values must be greater than or equal to the sum of its non-diagonal entries in the same row. Even, rearranging the rows to satisfy the diagonally dominant condition is futile. </b> 
+  a. Solve using the Jacobi method with 2-digit precision. **Answer: The system of equations cannot guarantee convergence using the Jacobi Method since it violates the condition wherein the diagonal values must be greater than or equal to the sum of its non-diagonal entries in the same row. Even, rearranging the rows to satisfy the diagonally dominant condition is futile.** 
 $$
 \boxed{
 \text{Therefore, it cannot be solved using the Jacobi Method}
@@ -546,7 +551,8 @@ for(i in 1:5){
 ```
 
   
-  b. Solve using Gauss-Seidel method with 2-digit precision. <b>Answer: Similar with the Jacobi Method, The system of equations cannot guarantee convergence using the Gauss-Seidel Method since it violates the condition wherein the diagonal values must be greater than or equal to the sum of its non-diagonal entries in the same row. Even, rearranging the rows to satisfy the diagonally dominant condition is futile. </b>
+  b. Solve using Gauss-Seidel method with 2-digit precision. **Answer: Similar with the Jacobi Method, The system of equations cannot guarantee convergence using the Gauss-Seidel Method since it violates the condition wherein the diagonal values must be greater than or equal to the sum of its non-diagonal entries in the same row. Even, rearranging the rows to satisfy the diagonally dominant condition is futile.**
+
 $$
 \boxed{
 \text{Therefore, it cannot be solved using the Gauss-Seidel Method}
@@ -561,7 +567,7 @@ for(i in 1:5){
 }
 ```
   
-  c. Solve for $\overline{e}$ if the true solution is: $x=1, y=2, z=-1$ <b> Answer: Using the residual from no. 4, </b>
+  c. Solve for $\overline{e}$ if the true solution is: $x=1, y=2, z=-1$ **Answer: Using the residual from no. 4,**
 
 ```{r, echo=TRUE}
 A <- matrix(c(2, 3, -1, 4, -1, 2, -3, 2, 1), nrow=3, byrow=TRUE)
