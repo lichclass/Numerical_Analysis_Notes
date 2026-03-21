@@ -2101,13 +2101,11 @@ of the matrix:
 }
 \]</span></p>
 <h4>
-6.) Solve the system of equations given in no.4, starting with the
+6.) Solve the system of equations given in no. 4, starting with the
 initial vector of <span class="math inline">\([0,0,0]\)</span>:
 </h4>
-<ol style="list-style-type: lower-alpha">
-<li>Solve using the Jacobi method with 2-digit precision.</li>
-</ol>
-<pre class="r"><code>A = matrix(c(2, 3, -1, 4, -1, 2, -3, 2, 1), nrow=3, byrow=TRUE)
+<pre class="r"><code># Preprocessing the LUD matrices
+A = matrix(c(2, 3, -1, 4, -1, 2, -3, 2, 1), nrow=3, byrow=TRUE)
 b = matrix(c(5, 6, -4), nrow=3, byrow=TRUE)
 
 # This function returns the Lower Triangle, Upper Triangle, and Diagonal Matrices
@@ -2153,30 +2151,101 @@ D</code></pre>
 ## [1,]    2    0    0
 ## [2,]    0   -1    0
 ## [3,]    0    0    1</code></pre>
-<pre class="r"><code>x &lt;- matrix(0, nrow=3, ncol=1)
-tol &lt;- 0.001
-for(i in 1:200){
-  x &lt;- (-1*solve(D)) %*% (L + U) %*% x + solve(D) %*% b
+<ol style="list-style-type: lower-alpha">
+<li>Solve using the Jacobi method with 2-digit precision. <b> Answer:
+The system of equations cannot guarantee convergence using the Jacobi
+Method since it violates the condition wherein the diagonal values must
+be greater than or equal to the sum of its non-diagonal entries in the
+same row. Even, rearranging the rows to satisfy the diagonally dominant
+condition is futile. </b> <span class="math display">\[
+\boxed{
+\text{Therefore, it cannot be solved using the Jacobi Method}
 }
-print(round(x, digits = 2))</code></pre>
-<pre><code>##               [,1]
-## [1,] 3.385084e+100
-## [2,] 4.296283e+100
-## [3,] 6.334994e+100</code></pre>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Solve using Gauss-Seidel method with 2-digit precision.</li>
+\]</span></li>
 </ol>
-<pre class="r"><code>x &lt;- matrix(0, nrow=3, ncol=1)
-for(i in 1:10){
-  #LD &lt;- L + D
-  #x &lt;- (-1) %*% solve(LD) %*% U %*% x + solve(LD) %*% b
-  #print(x)
+<pre class="r"><code># Example Divergence with 5 iterations (Jacobi Method)
+x &lt;- matrix(0, nrow=3, ncol=1)
+for(i in 1:5){
+  x &lt;- (-1*solve(D)) %*% (L + U) %*% x + solve(D) %*% b
+  print(round(x, digits = 2))
 }</code></pre>
+<pre><code>##      [,1]
+## [1,]  2.5
+## [2,] -6.0
+## [3,] -4.0
+##      [,1]
+## [1,]  9.5
+## [2,] -4.0
+## [3,] 15.5
+##       [,1]
+## [1,] 16.25
+## [2,] 63.00
+## [3,] 32.50
+##        [,1]
+## [1,] -75.75
+## [2,] 124.00
+## [3,] -81.25
+##         [,1]
+## [1,] -224.12
+## [2,] -471.50
+## [3,] -479.25</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Solve using Gauss-Seidel method with 2-digit precision. <b>Answer:
+Similar with the Jacobi Method, The system of equations cannot guarantee
+convergence using the Gauss-Seidel Method since it violates the
+condition wherein the diagonal values must be greater than or equal to
+the sum of its non-diagonal entries in the same row. Even, rearranging
+the rows to satisfy the diagonally dominant condition is futile. </b>
+<span class="math display">\[
+\boxed{
+\text{Therefore, it cannot be solved using the Gauss-Seidel Method}
+}
+\]</span></li>
+</ol>
+<pre class="r"><code># Example Divergence with 5 iterations (Gauss-Seidel Method)
+x &lt;- matrix(0, nrow=3, ncol=1)
+for(i in 1:5){
+  x &lt;- -1 * solve(L + D) %*% U %*% x + solve(L + D) %*% b
+  print(round(x, digits = 2))
+}</code></pre>
+<pre><code>##      [,1]
+## [1,]  2.5
+## [2,]  4.0
+## [3,] -4.5
+##        [,1]
+## [1,]  -5.75
+## [2,] -38.00
+## [3,]  54.75
+##         [,1]
+## [1,]   86.88
+## [2,]  451.00
+## [3,] -645.38
+##          [,1]
+## [1,]  -996.69
+## [2,] -5283.50
+## [3,]  7572.94
+##           [,1]
+## [1,]  11714.22
+## [2,]  61996.75
+## [3,] -88854.84</code></pre>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Solve for <span class="math inline">\(\overline{e}\)</span> if the
-true solution is: <span class="math inline">\(x=1, y=2,
-z=-1\)</span></li>
+true solution is: <span class="math inline">\(x=1, y=2, z=-1\)</span>
+<b> Answer: Using the residual from no. 4, </b></li>
 </ol>
+<pre class="r"><code>A &lt;- matrix(c(2, 3, -1, 4, -1, 2, -3, 2, 1), nrow=3, byrow=TRUE)
+r &lt;- matrix(c(-4, 6, -4), nrow=3, byrow=TRUE)
+e &lt;- solve(A) %*% r
+round(abs(e), 4)</code></pre>
+<pre><code>##        [,1]
+## [1,] 0.6667
+## [2,] 1.4667
+## [3,] 0.9333</code></pre>
+<p><span class="math display">\[
+\boxed{
+\text{Therefore, } \overline{e} = (0.6667, 1.4667, 0.9333)
+}
+\]</span></p>
 
 
 

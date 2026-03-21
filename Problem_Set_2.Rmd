@@ -435,8 +435,8 @@ $$
 
 <h4> 6.) Solve the system of equations given in no. 4, starting with the initial vector of $[0,0,0]$: </h4>
 
-  a. Solve using the Jacobi method with 2-digit precision.
 ```{r, echo=TRUE}
+# Preprocessing the LUD matrices
 A = matrix(c(2, 3, -1, 4, -1, 2, -3, 2, 1), nrow=3, byrow=TRUE)
 b = matrix(c(5, 6, -4), nrow=3, byrow=TRUE)
 
@@ -473,27 +473,53 @@ U
 # Diagonal
 D <- LUD_results$D
 D
-
-x <- matrix(0, nrow=3, ncol=1)
-tol <- 0.001
-for(i in 1:200){
-  x <- (-1*solve(D)) %*% (L + U) %*% x + solve(D) %*% b
-}
-print(round(x, digits = 2))
 ```
 
-  
-  b. Solve using Gauss-Seidel method with 2-digit precision.
-  
+  a. Solve using the Jacobi method with 2-digit precision. <b> Answer: The system of equations cannot guarantee convergence using the Jacobi Method since it violates the condition wherein the diagonal values must be greater than or equal to the sum of its non-diagonal entries in the same row. Even, rearranging the rows to satisfy the diagonally dominant condition is futile. </b> 
+$$
+\boxed{
+\text{Therefore, it cannot be solved using the Jacobi Method}
+}
+$$  
+
 ```{r, echo=TRUE}
+# Example Divergence with 5 iterations (Jacobi Method)
 x <- matrix(0, nrow=3, ncol=1)
-for(i in 1:10){
-  #LD <- L + D
-  #x <- (-1) %*% solve(LD) %*% U %*% x + solve(LD) %*% b
-  #print(x)
+for(i in 1:5){
+  x <- (-1*solve(D)) %*% (L + U) %*% x + solve(D) %*% b
+  print(round(x, digits = 2))
+}
+```
+
+  
+  b. Solve using Gauss-Seidel method with 2-digit precision. <b>Answer: Similar with the Jacobi Method, The system of equations cannot guarantee convergence using the Gauss-Seidel Method since it violates the condition wherein the diagonal values must be greater than or equal to the sum of its non-diagonal entries in the same row. Even, rearranging the rows to satisfy the diagonally dominant condition is futile. </b>
+$$
+\boxed{
+\text{Therefore, it cannot be solved using the Gauss-Seidel Method}
+}
+$$
+```{r, echo=TRUE}
+# Example Divergence with 5 iterations (Gauss-Seidel Method)
+x <- matrix(0, nrow=3, ncol=1)
+for(i in 1:5){
+  x <- -1 * solve(L + D) %*% U %*% x + solve(L + D) %*% b
+  print(round(x, digits = 2))
 }
 ```
   
-  c. Solve for $\overline{e}$ if the true solution is: $x=1, y=2, z=-1$
+  c. Solve for $\overline{e}$ if the true solution is: $x=1, y=2, z=-1$ <b> Answer: Using the residual from no. 4, </b>
+
+```{r, echo=TRUE}
+A <- matrix(c(2, 3, -1, 4, -1, 2, -3, 2, 1), nrow=3, byrow=TRUE)
+r <- matrix(c(-4, 6, -4), nrow=3, byrow=TRUE)
+e <- solve(A) %*% r
+round(abs(e), 4)
+```
+
+$$
+\boxed{
+\text{Therefore, } \overline{e} = (0.6667, 1.4667, 0.9333)
+}
+$$
   
 
