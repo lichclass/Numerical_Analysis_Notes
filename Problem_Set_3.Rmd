@@ -1,0 +1,64 @@
+---
+title: "Problem_Set_3"
+author: "Group 2"
+date: "April 26, 2026"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#### 1. If $e^{1.3}$ is approximated by Lagrangian interpolation from the values for $e^0 = 1, e^1 = 2.7183$ and $e^2 = 7.3891$, what are the minimum and maximum estimates for the error? Compare to the actual error.
+
+**Answer:**
+
+
+#### 2. Construct the divided-difference table from these data:
+$$
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$x$ & -0.2 & 0.3 & 0.7 & -0.3 & 0.1 \\
+\hline
+$f(x)$ & 1.23 & 2.34 & -1.05 & 6.51 & -0.06 \\
+\hline
+\end{tabular}
+$$
+
+#### Use the divided-difference table to interpolate for $f(0.4)$
+
+**Answer:**
+
+
+#### 3. You have these values for $x$ and $f(x)$:
+$$
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$x$ & -0.2 & 0.3 & 0.7 & -0.3 & 0.1 \\
+\hline
+$f(x)$ & 1.23 & 2.34 & -1.05 & 6.51 & -0.06 \\
+\hline
+\end{tabular}
+$$
+
+#### Find $f(0.5)$ from a cubic that starts from $x=0.1$.
+
+**Answer:**
+
+
+#### 4. Given function $f(x) = 2x \cos 2x$. Use a central difference to compute $f'(2.0)$ and compare it using the $P'(x)$.
+
+**Answer:**
+
+
+#### 5. Use Trapezoid rule to estimate $\int_1^2 \frac{1}{x^2} dx$. Accurate within $0.001$.
+
+**Answer:**
+
+
+#### 6. Use Simpson's rule to estimate $\int_1^2 \frac{1}{x^2} dx$. Accurate within $0.001$.
+
+**Answer:**
+
+
